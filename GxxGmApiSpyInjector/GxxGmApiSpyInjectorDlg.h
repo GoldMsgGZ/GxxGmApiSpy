@@ -3,6 +3,8 @@
 //
 
 #pragma once
+#include "afxcmn.h"
+#include "afxwin.h"
 
 
 // CGxxGmApiSpyInjectorDlg ¶Ô»°¿ò
@@ -29,4 +31,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CListCtrl m_cProcessList;
+	CEdit m_cDllPath;
+	afx_msg void OnBnClickedBtnRefreshProcesses();
+	afx_msg void OnBnClickedBtnInject();
 };

@@ -25,18 +25,18 @@ int WINAPI DetourMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT 
 }
 
 
-int _tmain(int argc, _TCHAR* argv[])
+void Original_Hook()
 {
 	// ≥ı ºªØ
 	MH_STATUS status = MH_Initialize();
 	if (status != MH_OK)
 	{
-		std::cout << "Initialize Hook Engine failed. status : "<< status << std::endl;
+		std::cout << "Initialize Hook Engine failed. status : " << status << std::endl;
 		return 0;
 	}
 
 	// 
-	if (MH_CreateHook(&MessageBoxW, &DetourMessageBoxW,	reinterpret_cast<void**>(&fpMessageBoxW)) != MH_OK)
+	if (MH_CreateHook(&MessageBoxW, &DetourMessageBoxW, reinterpret_cast<void**>(&fpMessageBoxW)) != MH_OK)
 	{
 		return 1;
 	}
@@ -61,6 +61,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	status = MH_Uninitialize();
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	
 
 	return 0;
 }
